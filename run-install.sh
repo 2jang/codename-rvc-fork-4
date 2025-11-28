@@ -61,9 +61,17 @@ install_dependencies() {
     source "$MINICONDA_DIR/etc/profile.d/conda.sh"
     conda activate "$ENV_DIR"
 
-    uv pip install --upgrade setuptools
-    uv pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --upgrade --index-url https://download.pytorch.org/whl/cu128
-    uv pip install -r "$INSTALL_DIR/requirements.txt"
+    # Ensure uv operates on the env's Python, not any global environment
+    export UV_PYTHON="$ENV_DIR/bin/python"
+
+    "$ENV_DIR/bin/python" -m pip install --upgrade pip setuptools
+    "$ENV_DIR/bin/python" -m pip install uv
+
+    "$ENV_DIR/bin/uv" pip install --upgrade setuptools
+    "$ENV_DIR/bin/uv" pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --upgrade --index-url https://download.pytorch.org/whl/cu128
+    "$ENV_DIR/bin/uv" pip install -r "$INSTALL_DIR/requirements.txt"
+
+    unset UV_PYTHON
 
     conda deactivate
 
