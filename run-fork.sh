@@ -2,9 +2,7 @@
 set -e
 
 if [ "$EUID" -eq 0 ]; then
-    echo "The fork shouldn't be run as root. Don't do that."
-    read -rp "Press enter to exit..." _
-    exit 1
+    echo "Warning: running as root may cause permission issues."
 fi
 
 if [ ! -d "env" ]; then
