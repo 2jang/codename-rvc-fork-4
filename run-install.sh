@@ -70,6 +70,7 @@ install_dependencies() {
     "$ENV_DIR/bin/uv" pip install --upgrade setuptools
     "$ENV_DIR/bin/uv" pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --upgrade --index-url https://download.pytorch.org/whl/cu128
     "$ENV_DIR/bin/uv" pip install -r "$INSTALL_DIR/requirements.txt"
+    "$ENV_DIR/bin/uv" pip install pesq ring-attention-pytorch
 
     unset UV_PYTHON
 
