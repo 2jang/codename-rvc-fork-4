@@ -105,7 +105,7 @@ sudo ufw allow 25565/tcp
 tensorboard --logdir="path/to/your/model/folder" --bind_all
 ```
 
-> Make sure TensorBoard is installed:
+- Make sure TensorBoard is installed:
 
 ```
 pip install tensorboard
