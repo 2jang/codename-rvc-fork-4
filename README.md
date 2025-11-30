@@ -66,7 +66,7 @@ def launch_gradio(port):
     )
 ```
 
-2. Expose port for external access:
+2. Expose port **7897** for external access:
 
 - **Vast.ai** → use `cf tunnel`  
 - **RunPod** → open HTTP port via the dashboard
