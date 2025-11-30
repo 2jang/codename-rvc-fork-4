@@ -68,7 +68,7 @@ def launch_gradio(port):
 
 2. Expose port **7897** for external access:
 
-- **Vast.ai** → use `cf tunnel`  
+- **Vast.ai** → use `cf tunnel` via the dashboard
 - **RunPod** → open HTTP port via the dashboard
 
 3. Run the fork script:
