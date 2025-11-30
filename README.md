@@ -53,7 +53,13 @@ This will launch the Gradio interface in your default browser.
 
 ## 4-2. Running the Fork on Cloud / Headless Server
 
-1. Set host to 0.0.0.0 for cloud deployment:
+1. Make the run script executable:
+
+```
+sudo chmod +x run-fork.sh
+```
+
+2. Set host to 0.0.0.0 for cloud deployment:
 
 ```
 sed -i.bak '/def launch_gradio(port):/,/^\s*)/c\
@@ -67,12 +73,12 @@ def launch_gradio(port):\
     )' app.py
 ```
 
-2. Expose port **7897** for external access:
+3. Expose port **7897** for external access:
 
 - **Vast.ai** → use `cf tunnel` via the dashboard
 - **RunPod** → open HTTP port via the dashboard
 
-3. Run the fork script:
+4. Run the fork script:
 
 ```
 ./run-fork.sh
