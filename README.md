@@ -97,7 +97,7 @@ To monitor training or visualize data:
 sudo ufw allow 25565/tcp
 ```
 
-On cloud providers like Vast.ai or RunPod, make sure the external port 25565 is open in the dashboard or using tunnel.
+- On cloud providers like Vast.ai or RunPod, make sure the external port 25565 is open in the dashboard or using tunnel.
 
 3. Alternatively, run TensorBoard manually:
 
