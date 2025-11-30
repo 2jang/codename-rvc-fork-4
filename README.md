@@ -90,7 +90,13 @@ To monitor training or visualize data:
 sudo chmod +x logs/run_tensorboard_in_model_folder.sh
 ```
 
-2. Run the TensorBoard script:
+2. Modify the script to allow external access (bind to all interfaces):
+
+```
+sed -i.bak 's/host="$(hostname)"/host="0.0.0.0"/' logs/run_tensorboard_in_model_folder.sh
+```
+
+3. Run the TensorBoard script:
 
 ```
 ./logs/run_tensorboard_in_model_folder.sh
@@ -98,7 +104,7 @@ sudo chmod +x logs/run_tensorboard_in_model_folder.sh
 
 - Paste the path to your model folder containing `eval` or `tfevents` files when prompted.  
 
-3. If the port is blocked, open the firewall:
+4. If the port is blocked, open the firewall:
 
 ```
 sudo ufw allow 25565/tcp
@@ -106,7 +112,7 @@ sudo ufw allow 25565/tcp
 
 - On cloud providers like Vast.ai or RunPod, make sure the external port 25565 is open in the dashboard or using tunnel.
 
-4. Alternatively, run TensorBoard manually:
+5. Alternatively, run TensorBoard manually:
 
 ```
 tensorboard --logdir="path/to/your/model/folder" --bind_all
