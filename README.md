@@ -104,9 +104,10 @@ sudo chmod +x logs/run_tensorboard_in_model_folder.sh
 sudo ufw allow 25565/tcp
 ```
 
-- On cloud providers like Vast.ai or RunPod, make sure the external port 25565 is open in the dashboard or using tunnel.
+4. On cloud providers like Vast.ai or RunPod, take the address shown in the terminal (e.g., `http://1825d618cac8:25565`) and use it with your tunnel or port-forwarding setup to access the interface externally.
 
-4. Alternatively, run TensorBoard manually:
+
+5. Alternatively, run TensorBoard manually:
 
 ```
 tensorboard --logdir="path/to/your/model/folder" --bind_all
