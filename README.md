@@ -53,17 +53,18 @@ This will launch the Gradio interface in your default browser.
 
 ## 4-2. Running the Fork on Cloud / Headless Server
 
-1. Modify `app.py` for cloud deployment:
+1. Set host to 0.0.0.0 for cloud deployment:
 
 ```
-def launch_gradio(port):
-    Applio.launch(
-        favicon_path="assets/ICON.ico",
-        share="--share" in sys.argv,
-        inbrowser="--open" in sys.argv,
-        server_name="0.0.0.0",  # Bind to all interfaces for cloud
-        server_port=port,
-    )
+sed -i.bak '/def launch_gradio(port):/,/^\s*)/c\
+def launch_gradio(port):\
+    Applio.launch(\
+        favicon_path="assets/ICON.ico",\
+        share="--share" in sys.argv,\
+        inbrowser="--open" in sys.argv,\
+        server_name="0.0.0.0",\
+        server_port=port,\
+    )' app.py
 ```
 
 2. Expose port **7897** for external access:
@@ -83,15 +84,21 @@ The Gradio interface will now be accessible via the public IP and port provided 
 
 To monitor training or visualize data:
 
-1. Run the TensorBoard script:
+1. Make the TensorBoard script executable:
 
 ```
-./run_tensorboard_in_model_folder.sh
+sudo chmod +x logs/run_tensorboard_in_model_folder.sh
 ```
 
-- Paste the path to your model folder containing `eval` or `tfevents` files.  
+2. Run the TensorBoard script:
 
-2. If the port is blocked, open the firewall:
+```
+./logs/run_tensorboard_in_model_folder.sh
+```
+
+- Paste the path to your model folder containing `eval` or `tfevents` files when prompted.  
+
+3. If the port is blocked, open the firewall:
 
 ```
 sudo ufw allow 25565/tcp
@@ -99,7 +106,7 @@ sudo ufw allow 25565/tcp
 
 - On cloud providers like Vast.ai or RunPod, make sure the external port 25565 is open in the dashboard or using tunnel.
 
-3. Alternatively, run TensorBoard manually:
+4. Alternatively, run TensorBoard manually:
 
 ```
 tensorboard --logdir="path/to/your/model/folder" --bind_all
@@ -110,6 +117,7 @@ tensorboard --logdir="path/to/your/model/folder" --bind_all
 ```
 pip install tensorboard
 ```
+
 
 ---
 
