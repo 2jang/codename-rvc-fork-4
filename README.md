@@ -1,3 +1,41 @@
+
+
+# Getting Started (Linux) 
+
+## 1. Installation of the Fork 
+
+Make the installation script executable:
+
+```bash
+sudo chmod +x run-install.sh
+```
+
+Then run the script:
+
+```bash
+./run-install.sh
+```
+
+---
+
+## 2. Running the Fork 
+
+Make the run script executable:
+
+```bash
+sudo chmod +x run-fork.sh
+```
+
+Then start Applio:
+
+```bash
+./run-fork.sh
+```
+
+This will launch the Gradio interface in your default browser.
+
+---
+
 # <p align="center">` Codename-RVC-Fork 🍇 4 ` </p>
 ## <p align="center">Based on Applio</p>
 
