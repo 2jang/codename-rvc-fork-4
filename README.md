@@ -79,6 +79,40 @@ def launch_gradio(port):
 
 The Gradio interface will now be accessible via the public IP and port provided by your cloud provider or tunneling service.
 
+## 6. Optional: TensorBoard Monitoring
+
+To monitor training or visualize data:
+
+1. Run the TensorBoard script:
+
+```
+./run_tensorboard_in_model_folder.sh
+```
+
+- Paste the path to your model folder containing `eval` or `tfevents` files.  
+
+2. If the port is blocked, open the firewall:
+
+```
+sudo ufw allow 25565/tcp
+```
+
+> On cloud providers like Vast.ai or RunPod, make sure the external port 25565 is open in the dashboard or using tunnel.
+
+3. Alternatively, run TensorBoard manually:
+
+```
+tensorboard --logdir="path/to/your/model/folder" --bind_all
+```
+
+> Make sure TensorBoard is installed:
+
+```
+pip install tensorboard
+```
+
+---
+
 # <p align="center">` Codename-RVC-Fork 🍇 4 ` </p>
 ## <p align="center">Based on Applio</p>
 
