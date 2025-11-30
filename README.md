@@ -79,7 +79,7 @@ def launch_gradio(port):
 
 The Gradio interface will now be accessible via the public IP and port provided by your cloud provider or tunneling service.
 
-## 6. Optional: TensorBoard Monitoring
+## 5. Optional: TensorBoard Monitoring
 
 To monitor training or visualize data:
 
