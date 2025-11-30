@@ -1,40 +1,83 @@
+# Getting Started (Linux / Cloud)
 
+## 1. Clone the Fork
 
-# Getting Started (Linux) 
+```
+git clone https://github.com/2jang/codename-rvc-fork-4-linux.git
+cd codename-rvc-fork-4-linux
+```
 
-## 1. Installation of the Fork 
+---
+
+## 2. Update System Packages
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+---
+
+## 3. Installation of the Fork
 
 Make the installation script executable:
 
-```bash
+```
 sudo chmod +x run-install.sh
 ```
 
-Then run the script:
+Then run the installation:
 
-```bash
+```
 ./run-install.sh
 ```
 
 ---
 
-## 2. Running the Fork 
+## 4-1. Running the Fork Locally
 
 Make the run script executable:
 
-```bash
+```
 sudo chmod +x run-fork.sh
 ```
 
 Then start Applio:
 
-```bash
+```
 ./run-fork.sh
 ```
 
 This will launch the Gradio interface in your default browser.
 
 ---
+
+## 4-2. Running the Fork on Cloud / Headless Server
+
+1. Modify `app.py` for cloud deployment:
+
+```
+def launch_gradio(port):
+    Applio.launch(
+        favicon_path="assets/ICON.ico",
+        share="--share" in sys.argv,
+        inbrowser="--open" in sys.argv,
+        server_name="0.0.0.0",  # Bind to all interfaces for cloud
+        server_port=port,
+    )
+```
+
+2. Expose port for external access:
+
+- **Vast.ai** → use `cf tunnel`  
+- **RunPod** → open HTTP port via the dashboard
+
+3. Run the fork script:
+
+```
+./run-fork.sh
+```
+
+The Gradio interface will now be accessible via the public IP and port provided by your cloud provider or tunneling service.
 
 # <p align="center">` Codename-RVC-Fork 🍇 4 ` </p>
 ## <p align="center">Based on Applio</p>
